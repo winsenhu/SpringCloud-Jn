@@ -16,6 +16,9 @@
    > demo需写README.md说明   
    > demo可执行或有单元测试用例   
    > demo上传到github上的SpringCloud-Jn项目中
+- 关于问题讨论或建议：
+   > 可在Issues中提出   
+   > 对于感悟或总结可写在Wiki中
 ## 三、知识点
 
 ### 规范
