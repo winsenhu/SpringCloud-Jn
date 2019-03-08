@@ -24,11 +24,16 @@
 ### 规范
 - [ ] RESTful   
 - [ ] Maven继承
-
+- [ ] Oauth2
 ### Spring Boot
-- [ ] 数据访问Mybatis
+- [ ] 整合Mybatis
+- [ ] Spring Boot Admin
+- [ ] 异常处理
 - [ ] 事件的发布与监听
+- [ ] Webflux
 - [ ] 缓存redis
+- [ ] 日志
+- [ ] Spring Boot Actuator
 ### Thymeleaf
 
 ### Spring Cloud
@@ -39,6 +44,9 @@
 - [ ] 消息订阅
 - [ ] 监控
 
+### 特性
+- [ ] 重复提交
+-
 ### Vue
 
 ### docker
