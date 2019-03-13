@@ -26,14 +26,14 @@
 - [ ] Maven继承
 - [ ] Oauth2
 ### Spring Boot
-- [ ] 整合Mybatis
+- [ ] 整合Mybatis  [黄国希、张跃彬 2019-03-20]
 - [ ] Spring Boot Admin
 - [ ] 异常处理
 - [ ] 事件的发布与监听
 - [ ] Webflux
 - [ ] 缓存redis
 - [ ] 日志
-- [ ] Spring Boot Actuator
+- [ ] Spring Boot Actuator  [李镇涛 2019-04-03]
 ### Thymeleaf
 
 ### Spring Cloud
@@ -49,7 +49,7 @@
 - [ ] 重复提交
 -
 ### Vue
-
+- [ ] vue概要  [张琳涛 2019-03-27]
 ### docker
 
 
