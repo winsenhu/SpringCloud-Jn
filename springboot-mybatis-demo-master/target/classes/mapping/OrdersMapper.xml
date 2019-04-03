@@ -1,0 +1,486 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.winter.mapper.OrdersMapper" >
+  <resultMap id="BaseResultMap" type="com.winter.model.Orders" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="merchant_union_ids" property="merchantUnionIds" jdbcType="VARCHAR" />
+    <result column="sn" property="sn" jdbcType="VARCHAR" />
+    <result column="platform_id" property="platformId" jdbcType="BIGINT" />
+    <result column="seller_type" property="sellerType" jdbcType="VARCHAR" />
+    <result column="seller_id" property="sellerId" jdbcType="BIGINT" />
+    <result column="store_id" property="storeId" jdbcType="BIGINT" />
+    <result column="buyer_type" property="buyerType" jdbcType="VARCHAR" />
+    <result column="buyer_id" property="buyerId" jdbcType="BIGINT" />
+    <result column="buyer_account_id" property="buyerAccountId" jdbcType="BIGINT" />
+    <result column="agent_buyer_id" property="agentBuyerId" jdbcType="BIGINT" />
+    <result column="agent_employee_id" property="agentEmployeeId" jdbcType="BIGINT" />
+    <result column="trade_scene_code" property="tradeSceneCode" jdbcType="VARCHAR" />
+    <result column="pay_mode" property="payMode" jdbcType="VARCHAR" />
+    <result column="pay_amount" property="payAmount" jdbcType="DECIMAL" />
+    <result column="amount" property="amount" jdbcType="DECIMAL" />
+    <result column="discount" property="discount" jdbcType="DECIMAL" />
+    <result column="card_amount" property="cardAmount" jdbcType="DECIMAL" />
+    <result column="free_rate" property="freeRate" jdbcType="DECIMAL" />
+    <result column="pay_free_rate" property="payFreeRate" jdbcType="DECIMAL" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="finish_time" property="finishTime" jdbcType="TIMESTAMP" />
+    <result column="deliver_time" property="deliverTime" jdbcType="TIMESTAMP" />
+    <result column="pay_time" property="payTime" jdbcType="TIMESTAMP" />
+    <result column="receive_time" property="receiveTime" jdbcType="TIMESTAMP" />
+    <result column="from_type" property="fromType" jdbcType="VARCHAR" />
+    <result column="from_id" property="fromId" jdbcType="BIGINT" />
+    <result column="parcel_ids" property="parcelIds" jdbcType="VARCHAR" />
+    <result column="logistic_sns" property="logisticSns" jdbcType="VARCHAR" />
+    <result column="create_account_id" property="createAccountId" jdbcType="BIGINT" />
+    <result column="created_at" property="createdAt" jdbcType="TIMESTAMP" />
+    <result column="logistics_comp_code" property="logisticsCompCode" jdbcType="VARCHAR" />
+    <result column="provider_id" property="providerId" jdbcType="BIGINT" />
+    <result column="has_receive" property="hasReceive" jdbcType="INTEGER" />
+    <result column="open_id" property="openId" jdbcType="VARCHAR" />
+    <result column="card_code" property="cardCode" jdbcType="VARCHAR" />
+    <association property="orderItems" resultMap="orderItemsResultMap"/>
+    <!--<collection property="orderItemsList" ofType="com.winter.model.OrderItems">-->
+      <!--<id column="id" property="id"/>-->
+      <!--<result column="item_name" property="itemName"/>-->
+    <!--</collection>-->
+
+  </resultMap>
+
+<resultMap id="orderItemsResultMap" type="com.winter.model.OrderItems">
+<id property="id" column="order_items_id"/>
+<result property="itemName" column="item_name"/>
+</resultMap>
+
+
+
+  <sql id="Base_Column_List" >
+    id, merchant_union_ids, sn, platform_id, seller_type, seller_id, store_id, buyer_type, 
+    buyer_id, buyer_account_id, agent_buyer_id, agent_employee_id, trade_scene_code, 
+    pay_mode, pay_amount, amount, discount, card_amount, free_rate, pay_free_rate, status, 
+    finish_time, deliver_time, pay_time, receive_time, from_type, from_id, parcel_ids, 
+    logistic_sns, create_account_id, created_at, logistics_comp_code, provider_id, has_receive, 
+    open_id, card_code
+  </sql>
+
+
+  <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    SELECT
+    o.id,
+    o.sn,
+    oi.id,
+    oi.item_name
+    FROM orders o LEFT JOIN order_items oi on oi.order_id = o.id  WHERE o.id = #{id,jdbcType=BIGINT}
+  </select>
+
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from orders
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from orders
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.winter.model.Orders" >
+    insert into orders (id, merchant_union_ids, sn, 
+      platform_id, seller_type, seller_id, 
+      store_id, buyer_type, buyer_id, 
+      buyer_account_id, agent_buyer_id, agent_employee_id, 
+      trade_scene_code, pay_mode, pay_amount, 
+      amount, discount, card_amount, 
+      free_rate, pay_free_rate, status, 
+      finish_time, deliver_time, pay_time, 
+      receive_time, from_type, from_id, 
+      parcel_ids, logistic_sns, create_account_id, 
+      created_at, logistics_comp_code, provider_id, 
+      has_receive, open_id, card_code
+      )
+    values (#{id,jdbcType=BIGINT}, #{merchantUnionIds,jdbcType=VARCHAR}, #{sn,jdbcType=VARCHAR}, 
+      #{platformId,jdbcType=BIGINT}, #{sellerType,jdbcType=VARCHAR}, #{sellerId,jdbcType=BIGINT}, 
+      #{storeId,jdbcType=BIGINT}, #{buyerType,jdbcType=VARCHAR}, #{buyerId,jdbcType=BIGINT}, 
+      #{buyerAccountId,jdbcType=BIGINT}, #{agentBuyerId,jdbcType=BIGINT}, #{agentEmployeeId,jdbcType=BIGINT}, 
+      #{tradeSceneCode,jdbcType=VARCHAR}, #{payMode,jdbcType=VARCHAR}, #{payAmount,jdbcType=DECIMAL}, 
+      #{amount,jdbcType=DECIMAL}, #{discount,jdbcType=DECIMAL}, #{cardAmount,jdbcType=DECIMAL}, 
+      #{freeRate,jdbcType=DECIMAL}, #{payFreeRate,jdbcType=DECIMAL}, #{status,jdbcType=INTEGER}, 
+      #{finishTime,jdbcType=TIMESTAMP}, #{deliverTime,jdbcType=TIMESTAMP}, #{payTime,jdbcType=TIMESTAMP}, 
+      #{receiveTime,jdbcType=TIMESTAMP}, #{fromType,jdbcType=VARCHAR}, #{fromId,jdbcType=BIGINT}, 
+      #{parcelIds,jdbcType=VARCHAR}, #{logisticSns,jdbcType=VARCHAR}, #{createAccountId,jdbcType=BIGINT}, 
+      #{createdAt,jdbcType=TIMESTAMP}, #{logisticsCompCode,jdbcType=VARCHAR}, #{providerId,jdbcType=BIGINT}, 
+      #{hasReceive,jdbcType=INTEGER}, #{openId,jdbcType=VARCHAR}, #{cardCode,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.winter.model.Orders" >
+    insert into orders
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="merchantUnionIds != null" >
+        merchant_union_ids,
+      </if>
+      <if test="sn != null" >
+        sn,
+      </if>
+      <if test="platformId != null" >
+        platform_id,
+      </if>
+      <if test="sellerType != null" >
+        seller_type,
+      </if>
+      <if test="sellerId != null" >
+        seller_id,
+      </if>
+      <if test="storeId != null" >
+        store_id,
+      </if>
+      <if test="buyerType != null" >
+        buyer_type,
+      </if>
+      <if test="buyerId != null" >
+        buyer_id,
+      </if>
+      <if test="buyerAccountId != null" >
+        buyer_account_id,
+      </if>
+      <if test="agentBuyerId != null" >
+        agent_buyer_id,
+      </if>
+      <if test="agentEmployeeId != null" >
+        agent_employee_id,
+      </if>
+      <if test="tradeSceneCode != null" >
+        trade_scene_code,
+      </if>
+      <if test="payMode != null" >
+        pay_mode,
+      </if>
+      <if test="payAmount != null" >
+        pay_amount,
+      </if>
+      <if test="amount != null" >
+        amount,
+      </if>
+      <if test="discount != null" >
+        discount,
+      </if>
+      <if test="cardAmount != null" >
+        card_amount,
+      </if>
+      <if test="freeRate != null" >
+        free_rate,
+      </if>
+      <if test="payFreeRate != null" >
+        pay_free_rate,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="finishTime != null" >
+        finish_time,
+      </if>
+      <if test="deliverTime != null" >
+        deliver_time,
+      </if>
+      <if test="payTime != null" >
+        pay_time,
+      </if>
+      <if test="receiveTime != null" >
+        receive_time,
+      </if>
+      <if test="fromType != null" >
+        from_type,
+      </if>
+      <if test="fromId != null" >
+        from_id,
+      </if>
+      <if test="parcelIds != null" >
+        parcel_ids,
+      </if>
+      <if test="logisticSns != null" >
+        logistic_sns,
+      </if>
+      <if test="createAccountId != null" >
+        create_account_id,
+      </if>
+      <if test="createdAt != null" >
+        created_at,
+      </if>
+      <if test="logisticsCompCode != null" >
+        logistics_comp_code,
+      </if>
+      <if test="providerId != null" >
+        provider_id,
+      </if>
+      <if test="hasReceive != null" >
+        has_receive,
+      </if>
+      <if test="openId != null" >
+        open_id,
+      </if>
+      <if test="cardCode != null" >
+        card_code,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="merchantUnionIds != null" >
+        #{merchantUnionIds,jdbcType=VARCHAR},
+      </if>
+      <if test="sn != null" >
+        #{sn,jdbcType=VARCHAR},
+      </if>
+      <if test="platformId != null" >
+        #{platformId,jdbcType=BIGINT},
+      </if>
+      <if test="sellerType != null" >
+        #{sellerType,jdbcType=VARCHAR},
+      </if>
+      <if test="sellerId != null" >
+        #{sellerId,jdbcType=BIGINT},
+      </if>
+      <if test="storeId != null" >
+        #{storeId,jdbcType=BIGINT},
+      </if>
+      <if test="buyerType != null" >
+        #{buyerType,jdbcType=VARCHAR},
+      </if>
+      <if test="buyerId != null" >
+        #{buyerId,jdbcType=BIGINT},
+      </if>
+      <if test="buyerAccountId != null" >
+        #{buyerAccountId,jdbcType=BIGINT},
+      </if>
+      <if test="agentBuyerId != null" >
+        #{agentBuyerId,jdbcType=BIGINT},
+      </if>
+      <if test="agentEmployeeId != null" >
+        #{agentEmployeeId,jdbcType=BIGINT},
+      </if>
+      <if test="tradeSceneCode != null" >
+        #{tradeSceneCode,jdbcType=VARCHAR},
+      </if>
+      <if test="payMode != null" >
+        #{payMode,jdbcType=VARCHAR},
+      </if>
+      <if test="payAmount != null" >
+        #{payAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="amount != null" >
+        #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="discount != null" >
+        #{discount,jdbcType=DECIMAL},
+      </if>
+      <if test="cardAmount != null" >
+        #{cardAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="freeRate != null" >
+        #{freeRate,jdbcType=DECIMAL},
+      </if>
+      <if test="payFreeRate != null" >
+        #{payFreeRate,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="finishTime != null" >
+        #{finishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deliverTime != null" >
+        #{deliverTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="payTime != null" >
+        #{payTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="receiveTime != null" >
+        #{receiveTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fromType != null" >
+        #{fromType,jdbcType=VARCHAR},
+      </if>
+      <if test="fromId != null" >
+        #{fromId,jdbcType=BIGINT},
+      </if>
+      <if test="parcelIds != null" >
+        #{parcelIds,jdbcType=VARCHAR},
+      </if>
+      <if test="logisticSns != null" >
+        #{logisticSns,jdbcType=VARCHAR},
+      </if>
+      <if test="createAccountId != null" >
+        #{createAccountId,jdbcType=BIGINT},
+      </if>
+      <if test="createdAt != null" >
+        #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="logisticsCompCode != null" >
+        #{logisticsCompCode,jdbcType=VARCHAR},
+      </if>
+      <if test="providerId != null" >
+        #{providerId,jdbcType=BIGINT},
+      </if>
+      <if test="hasReceive != null" >
+        #{hasReceive,jdbcType=INTEGER},
+      </if>
+      <if test="openId != null" >
+        #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="cardCode != null" >
+        #{cardCode,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.winter.model.Orders" >
+    update orders
+    <set >
+      <if test="merchantUnionIds != null" >
+        merchant_union_ids = #{merchantUnionIds,jdbcType=VARCHAR},
+      </if>
+      <if test="sn != null" >
+        sn = #{sn,jdbcType=VARCHAR},
+      </if>
+      <if test="platformId != null" >
+        platform_id = #{platformId,jdbcType=BIGINT},
+      </if>
+      <if test="sellerType != null" >
+        seller_type = #{sellerType,jdbcType=VARCHAR},
+      </if>
+      <if test="sellerId != null" >
+        seller_id = #{sellerId,jdbcType=BIGINT},
+      </if>
+      <if test="storeId != null" >
+        store_id = #{storeId,jdbcType=BIGINT},
+      </if>
+      <if test="buyerType != null" >
+        buyer_type = #{buyerType,jdbcType=VARCHAR},
+      </if>
+      <if test="buyerId != null" >
+        buyer_id = #{buyerId,jdbcType=BIGINT},
+      </if>
+      <if test="buyerAccountId != null" >
+        buyer_account_id = #{buyerAccountId,jdbcType=BIGINT},
+      </if>
+      <if test="agentBuyerId != null" >
+        agent_buyer_id = #{agentBuyerId,jdbcType=BIGINT},
+      </if>
+      <if test="agentEmployeeId != null" >
+        agent_employee_id = #{agentEmployeeId,jdbcType=BIGINT},
+      </if>
+      <if test="tradeSceneCode != null" >
+        trade_scene_code = #{tradeSceneCode,jdbcType=VARCHAR},
+      </if>
+      <if test="payMode != null" >
+        pay_mode = #{payMode,jdbcType=VARCHAR},
+      </if>
+      <if test="payAmount != null" >
+        pay_amount = #{payAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="amount != null" >
+        amount = #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="discount != null" >
+        discount = #{discount,jdbcType=DECIMAL},
+      </if>
+      <if test="cardAmount != null" >
+        card_amount = #{cardAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="freeRate != null" >
+        free_rate = #{freeRate,jdbcType=DECIMAL},
+      </if>
+      <if test="payFreeRate != null" >
+        pay_free_rate = #{payFreeRate,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="finishTime != null" >
+        finish_time = #{finishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deliverTime != null" >
+        deliver_time = #{deliverTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="payTime != null" >
+        pay_time = #{payTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="receiveTime != null" >
+        receive_time = #{receiveTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fromType != null" >
+        from_type = #{fromType,jdbcType=VARCHAR},
+      </if>
+      <if test="fromId != null" >
+        from_id = #{fromId,jdbcType=BIGINT},
+      </if>
+      <if test="parcelIds != null" >
+        parcel_ids = #{parcelIds,jdbcType=VARCHAR},
+      </if>
+      <if test="logisticSns != null" >
+        logistic_sns = #{logisticSns,jdbcType=VARCHAR},
+      </if>
+      <if test="createAccountId != null" >
+        create_account_id = #{createAccountId,jdbcType=BIGINT},
+      </if>
+      <if test="createdAt != null" >
+        created_at = #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="logisticsCompCode != null" >
+        logistics_comp_code = #{logisticsCompCode,jdbcType=VARCHAR},
+      </if>
+      <if test="providerId != null" >
+        provider_id = #{providerId,jdbcType=BIGINT},
+      </if>
+      <if test="hasReceive != null" >
+        has_receive = #{hasReceive,jdbcType=INTEGER},
+      </if>
+      <if test="openId != null" >
+        open_id = #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="cardCode != null" >
+        card_code = #{cardCode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.winter.model.Orders" >
+    update orders
+    set merchant_union_ids = #{merchantUnionIds,jdbcType=VARCHAR},
+      sn = #{sn,jdbcType=VARCHAR},
+      platform_id = #{platformId,jdbcType=BIGINT},
+      seller_type = #{sellerType,jdbcType=VARCHAR},
+      seller_id = #{sellerId,jdbcType=BIGINT},
+      store_id = #{storeId,jdbcType=BIGINT},
+      buyer_type = #{buyerType,jdbcType=VARCHAR},
+      buyer_id = #{buyerId,jdbcType=BIGINT},
+      buyer_account_id = #{buyerAccountId,jdbcType=BIGINT},
+      agent_buyer_id = #{agentBuyerId,jdbcType=BIGINT},
+      agent_employee_id = #{agentEmployeeId,jdbcType=BIGINT},
+      trade_scene_code = #{tradeSceneCode,jdbcType=VARCHAR},
+      pay_mode = #{payMode,jdbcType=VARCHAR},
+      pay_amount = #{payAmount,jdbcType=DECIMAL},
+      amount = #{amount,jdbcType=DECIMAL},
+      discount = #{discount,jdbcType=DECIMAL},
+      card_amount = #{cardAmount,jdbcType=DECIMAL},
+      free_rate = #{freeRate,jdbcType=DECIMAL},
+      pay_free_rate = #{payFreeRate,jdbcType=DECIMAL},
+      status = #{status,jdbcType=INTEGER},
+      finish_time = #{finishTime,jdbcType=TIMESTAMP},
+      deliver_time = #{deliverTime,jdbcType=TIMESTAMP},
+      pay_time = #{payTime,jdbcType=TIMESTAMP},
+      receive_time = #{receiveTime,jdbcType=TIMESTAMP},
+      from_type = #{fromType,jdbcType=VARCHAR},
+      from_id = #{fromId,jdbcType=BIGINT},
+      parcel_ids = #{parcelIds,jdbcType=VARCHAR},
+      logistic_sns = #{logisticSns,jdbcType=VARCHAR},
+      create_account_id = #{createAccountId,jdbcType=BIGINT},
+      created_at = #{createdAt,jdbcType=TIMESTAMP},
+      logistics_comp_code = #{logisticsCompCode,jdbcType=VARCHAR},
+      provider_id = #{providerId,jdbcType=BIGINT},
+      has_receive = #{hasReceive,jdbcType=INTEGER},
+      open_id = #{openId,jdbcType=VARCHAR},
+      card_code = #{cardCode,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
