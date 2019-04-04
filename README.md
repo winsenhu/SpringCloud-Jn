@@ -41,16 +41,16 @@
 - [ ] Webflux
 - [ ] 缓存redis
 - [ ] 日志
-- [ ] Spring Boot Actuator  [李镇涛 2019-04-03]
+- [ ] Spring Boot Actuator
 
 ### Thymeleaf
 
 ### Spring Cloud
 
-- [ ] 注册中心 [李泽彬 2017-04-10]
+- [ ] 注册中心 [李泽彬 2019-04-10]
 - [ ] 配置中心 [李泽彬 ]
 - [ ] 服务网关Zuul
-- [ ] 限流、降级、熔断
+- [ ] 限流、降级、熔断 [詹俊杰 2019-04-03]
 - [ ] 消息订阅
 - [ ] 监控
 - [ ] Data Flow
