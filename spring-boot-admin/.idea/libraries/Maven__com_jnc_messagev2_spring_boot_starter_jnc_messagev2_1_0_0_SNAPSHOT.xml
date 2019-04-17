@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.jnc.messagev2:spring-boot-starter-jnc-messagev2:1.0.0-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/jnc/messagev2/spring-boot-starter-jnc-messagev2/1.0.0-SNAPSHOT/spring-boot-starter-jnc-messagev2-1.0.0-20190222.110030-7.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/jnc/messagev2/spring-boot-starter-jnc-messagev2/1.0.0-SNAPSHOT/spring-boot-starter-jnc-messagev2-1.0.0-20190222.110030-7-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/jnc/messagev2/spring-boot-starter-jnc-messagev2/1.0.0-SNAPSHOT/spring-boot-starter-jnc-messagev2-1.0.0-20190222.110030-7-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
