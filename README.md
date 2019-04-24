@@ -59,7 +59,7 @@
 
 ### Vue
 
-- [x] vue概要  [张琳涛 2019-03-27]
+- [x] vue概要  [张琳涛 2019-03-27](https://github.com/winsenhu/SpringCloud-Jn/tree/master/vue2-manage-master "vue")
 
 ### docker
 
