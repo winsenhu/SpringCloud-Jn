@@ -1,0 +1,5 @@
+http://localhost:8080/id/new
+
+http://localhost:8080/redis/put/a/b
+
+http://localhost:8080/redis/get/a
