@@ -34,12 +34,11 @@
   
 ### Spring Boot
 
-- [ ] 整合Mybatis  [黄国希、张跃彬 2019-03-20](https://github.com/winsenhu/SpringCloud-Jn/tree/master/springboot-mybatis-demo-master "myBatis整合")
-- [ ] Spring Boot Admin [黄国希]()
+- [x] 整合Mybatis  [黄国希、张跃彬 2019-03-20](https://github.com/winsenhu/SpringCloud-Jn/tree/master/springboot-mybatis-demo-master "myBatis整合")
+- [x] Spring Boot Admin [黄国希 2019-04-17](https://github.com/winsenhu/SpringCloud-Jn/tree/master/spring-boot-admin "spring boot admin")
 - [ ] 异常处理
 - [ ] 事件的发布与监听
-- [ ] Webflux
-- [ ] 缓存redis
+- [x] Webflux、缓存redis [詹俊杰 2019-04-24](https://github.com/winsenhu/SpringCloud-Jn/tree/master/demo-redis "redis、webflux")
 - [ ] 日志
 - [ ] Spring Boot Actuator
 
@@ -47,7 +46,7 @@
 
 ### Spring Cloud
 
-- [ ] 注册中心 [李泽彬 2019-04-10](https://github.com/winsenhu/SpringCloud-Jn/tree/master/eureka-sever "eureka注册中心")
+- [x] 注册中心 [李泽彬 2019-04-10](https://github.com/winsenhu/SpringCloud-Jn/tree/master/eureka-sever "eureka注册中心")
 - [ ] 服务网关Zuul
 - [ ] 限流、降级、熔断 [詹俊杰 2019-04-03]
 - [ ] 消息订阅
@@ -60,7 +59,7 @@
 
 ### Vue
 
-- [ ] vue概要  [张琳涛 2019-03-27]
+- [x] vue概要  [张琳涛 2019-03-27]
 
 ### docker
 
