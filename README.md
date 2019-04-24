@@ -35,7 +35,7 @@
 ### Spring Boot
 
 - [ ] 整合Mybatis  [黄国希、张跃彬 2019-03-20](https://github.com/winsenhu/SpringCloud-Jn/tree/master/springboot-mybatis-demo-master "myBatis整合")
-- [ ] Spring Boot Admin
+- [ ] Spring Boot Admin [黄国希]()
 - [ ] 异常处理
 - [ ] 事件的发布与监听
 - [ ] Webflux
