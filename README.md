@@ -39,7 +39,9 @@
 - [ ] 异常处理
 - [ ] 事件的发布与监听
 - [x] Webflux、缓存redis [詹俊杰 2019-04-24](https://github.com/winsenhu/SpringCloud-Jn/tree/master/demo-redis "redis、webflux")
+- [x] Spring Boot事务处理 [张跃彬 2019-06-12]
 - [ ] 日志
+- [ ] 错误日志的监控与报警
 - [ ] Spring Boot Actuator
 
 ### Thymeleaf
@@ -47,8 +49,11 @@
 ### Spring Cloud
 
 - [x] 注册中心 [李泽彬 2019-04-10](https://github.com/winsenhu/SpringCloud-Jn/tree/master/eureka-sever "eureka注册中心")
+- [ ] 注册中心负载策略
+- [ ] 配置中心动态生效
 - [ ] 服务网关Zuul
 - [x] 限流、降级、熔断 [詹俊杰 2019-04-03]
+- [ ] 动态设置限流、降级规则
 - [ ] 消息订阅
 - [ ] 监控
 - [ ] Data Flow
@@ -62,5 +67,7 @@
 - [x] vue概要  [张琳涛 2019-03-27](https://github.com/winsenhu/SpringCloud-Jn/tree/master/vue2-manage-master "vue")
 
 ### docker
+
+- [ ] 灰度发布与蓝绿发布
 
 
